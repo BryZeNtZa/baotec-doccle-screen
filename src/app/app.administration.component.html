@@ -1,0 +1,104 @@
+<div style="margin-top: 20px; border: 1px solid #CCC; border-radius: 6px; padding: 50px;">
+
+	<div style="border-radius: 6px; background-color: rgb(220, 230, 255); border: 1px solid rgb(148, 148, 148);padding: 10px">
+		<mat-icon>settings</mat-icon><span style="position: relative; top: -6px; left: 10px">Console d'administration</span>
+	</div>
+
+    <br />
+    <br />
+    <mat-tab-group>
+        <mat-tab label="Paramètres de transfert">
+            <div class="form-container">
+                <p>
+                    <!-- Hide required marker (asterix) and auto float label -->
+                    <mat-form-field  [floatLabel]="'auto'" [style.width.%]=100>
+                        <input matInput placeholder="Emplacement clé privée SSH" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <!-- Hide required marker (asterix) and auto float label -->
+                    <mat-form-field  [floatLabel]="'auto'" [style.width.%]=100>
+                        <input matInput placeholder="Sender" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <!-- Hide required marker (asterix) and auto float label -->
+                    <mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
+                        <input matInput placeholder="Admin Email" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <!-- Show required marked (asterix) and auto float label -->
+                    <mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
+                        <mat-label>Server Host</mat-label>
+                        <input matInput placeholder="Server Host" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <!-- Show required marked (asterix) and auto float label -->
+                    <mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
+                        <mat-label>SMTP Server Port</mat-label>
+                        <input matInput placeholder="SMTP Server Port" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <!-- Show required marked (asterix) and auto float label -->
+                    <mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
+                        <mat-label>SMTP User</mat-label>
+                        <input matInput placeholder="SMTP User" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <!-- Show required marked (asterix) and auto float label -->
+                    <mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
+                        <mat-label>SMTP Password</mat-label>
+                        <input matInput placeholder="**************" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <!-- Show required marked (asterix) and auto float label -->
+                    <mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
+                        <mat-label>Folder des documents à diffuser</mat-label>
+                        <input matInput placeholder="/home/doccle/broadcast" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <!-- Show required marked (asterix) and auto float label -->
+                    <mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
+                        <mat-label>Folder de traitement</mat-label>
+                        <input matInput placeholder="/home/doccle/workingdir" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <!-- Show required marked (asterix) and auto float label -->
+                    <mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
+                        <mat-label>Fréquence d'envoi de documents</mat-label>
+                        <input matInput placeholder="..." required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <!-- Show required marked (asterix) and auto float label -->
+                    <mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
+                        <mat-label>Fréquence de téléchargement</mat-label>
+                        <input matInput placeholder="..." required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <!-- Show required marked (asterix) and auto float label -->
+                    <mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
+                        <mat-label>Fréquence envoi Receivers</mat-label>
+                        <input matInput placeholder="..." required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-label>Activer le mode Batch</mat-label>
+                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                        <mat-button-toggle value="bold">OUI</mat-button-toggle>
+                        <mat-button-toggle value="italic">NON</mat-button-toggle>
+                    </mat-button-toggle-group>    
+                </p>
+            </div>
+        </mat-tab>
+        <mat-tab label="Autres config"> Content 2 </mat-tab>
+    </mat-tab-group>
+</div>

@@ -1,0 +1,76 @@
+<div style="margin-top: 10px; border: 1px solid #CCC; border-radius: 6px; padding: 50px;">
+
+	<div style="background: #c7c7c7; border-radius: 6px; border: 1px solid rgb(94, 94, 94); padding: 10px">
+		<mat-icon>menu</mat-icon><span style="position: relative; top: -6px; left: 10px">Liste des Documents</span>
+	</div>
+
+	<br />
+	<br />
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+    
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef> Nom Fichier </th>
+        <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type Doc. </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="periode">
+        <th mat-header-cell *matHeaderCellDef> Période </th>
+        <td mat-cell *matCellDef="let element"> {{element.periode}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="libelle">
+        <th mat-header-cell *matHeaderCellDef> Libellé </th>
+        <td mat-cell *matCellDef="let element"> {{element.libelle}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="statutEnvoi">
+          <th mat-header-cell *matHeaderCellDef> Statut envoi </th>
+          <td mat-cell *matCellDef="let element"> {{element.statutEnvoi}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          (click)="selection.toggle(row)">
+      </tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <br />
+
+    <button mat-raised-button (click)="addDocument()" style="margin-right: 30px;"> <mat-icon>add</mat-icon> Nouveau Document </button>
+    <button mat-raised-button (click)="removeDocument()" style="margin-right: 30px;"><mat-icon>remove</mat-icon>Supprimer</button>
+    <button mat-raised-button (click)="sendDocuments()" style="margin-right: 30px;"><mat-icon>share</mat-icon>&nbsp;&nbsp;Envoyer les Documents à des Receivers</button>

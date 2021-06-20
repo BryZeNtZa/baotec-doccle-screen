@@ -1,0 +1,68 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+  
+.form-container > * {
+    width: 100%;
+}
+
+.mat-input-wrapper{
+    width:400px !important;
+}
+
+.app-sidenav {
+    padding: 4px;
+}
+.app-sidenav a {
+    padding: 5px;
+    display: block;
+    text-decoration: none;
+    background-color: rgb(220, 230, 255);
+    border: 1px solid rgb(148, 148, 148);
+    margin-top: 5px;
+    color: rgb(94, 94, 94);
+    text-shadow: 1px 1px 1px #FFF;
+    border-radius: 4px;
+}
+
+.app-sidenav a span{
+    position: relative;
+    top: -6px;
+    left: 5px;
+}
+
+.app-sidenav a:hover {
+    background-color: rgb(151, 193, 248);
+}
+
+.app-spacer {
+    flex: 1 1 auto;
+}
+
+.app-container {
+    height: calc(100% - 100px);
+    margin-top: -15px;
+  }
+  
+  .app-sidenav-content {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+  }
+  
+  .app-footer {
+      position: fixed;
+      bottom: 0;
+      height: 30px;
+      width: 100%;
+      background-color: rgb(206, 209, 209);
+      border-top: 1px solid #666;
+  }
+
+  .app-footer .app-footer-author {
+      float: right;
+      margin-right: 20px;
+      margin-top: 2px;
+      color: #666;
+  }

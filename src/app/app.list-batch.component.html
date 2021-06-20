@@ -1,0 +1,71 @@
+<div style="margin-top: 10px; border: 1px solid #CCC; border-radius: 6px; padding: 50px;">
+
+	<div style="background: #c7c7c7; border-radius: 6px; border: 1px solid rgb(94, 94, 94); padding: 10px">
+		<mat-icon>menu</mat-icon><span style="position: relative; top: -6px; left: 10px">Liste des Batch</span>
+	</div>
+
+	<br />
+	<br />
+	
+	<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%">
+
+		<!-- Checkbox Column -->
+		<ng-container matColumnDef="select">
+		  <th mat-header-cell *matHeaderCellDef>
+			<mat-checkbox (change)="$event ? masterToggle() : null"
+						  [checked]="selection.hasValue() && isAllSelected()"
+						  [indeterminate]="selection.hasValue() && !isAllSelected()"
+						  [aria-label]="checkboxLabel()">
+			</mat-checkbox>
+		  </th>
+		  <td mat-cell *matCellDef="let row">
+			<mat-checkbox (click)="$event.stopPropagation()"
+						  (change)="$event ? selection.toggle(row) : null"
+						  [checked]="selection.isSelected(row)"
+						  [aria-label]="checkboxLabel(row)">
+			</mat-checkbox>
+		  </td>
+		</ng-container>
+	  
+		<!-- Position Column -->
+		<ng-container matColumnDef="id">
+		  <th mat-header-cell *matHeaderCellDef> ID </th>
+		  <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+		</ng-container>
+	  
+		<!-- Name Column -->
+		<ng-container matColumnDef="type">
+		  <th mat-header-cell *matHeaderCellDef> Type </th>
+		  <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+		</ng-container>
+	  
+		<!-- Weight Column -->
+		<ng-container matColumnDef="dateEnvoi">
+		  <th mat-header-cell *matHeaderCellDef> Date envoi </th>
+		  <td mat-cell *matCellDef="let element"> {{element.dateEnvoi}} </td>
+		</ng-container>
+	  
+		<!-- Symbol Column -->
+		<ng-container matColumnDef="statut">
+		  <th mat-header-cell *matHeaderCellDef> Statut </th>
+		  <td mat-cell *matCellDef="let element"> {{element.statut}} </td>
+		</ng-container>
+
+		<!-- Symbol Column -->
+		<ng-container matColumnDef="nomFichier">
+			<th mat-header-cell *matHeaderCellDef> Nom fichier </th>
+			<td mat-cell *matCellDef="let element"> {{element.nomFichier}} </td>
+		</ng-container>
+
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"
+			(click)="selection.toggle(row)">
+		</tr>
+	  </table>
+	  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+	  <br />
+
+      <button mat-raised-button (click)="detailsBatch()" style="margin-right: 30px;"> <mat-icon>visibility</mat-icon> Détails </button>
+	  <button mat-raised-button (click)="addBatch()" style="margin-right: 30px;"> <mat-icon>add</mat-icon> Ajouter </button>
+	  <button mat-raised-button (click)="deleteBatch()" style="margin-right: 30px;"><mat-icon>remove</mat-icon>Supprimer</button>
+</div>

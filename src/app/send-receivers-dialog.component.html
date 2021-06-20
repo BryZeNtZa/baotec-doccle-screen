@@ -1,0 +1,91 @@
+<h2 mat-dialog-title>Envoi de documents à des Receivers</h2>
+<div style="background: rgb(255, 172, 172); border: 1px solid rgb(255, 90, 90); padding: 8px; border-radius: 6px;">
+    Sélectionnez les Receivers
+</div> 
+<mat-dialog-content class="mat-typography" style="height: calc(100vh - 90px)">
+
+    <div style="position: relative; border: 1px solid rgb(158, 158, 158); border-radius: 6px; margin-top: 20px; height: 90%; overflow: auto;"> 
+        <div>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%">
+
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+              <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()"
+                      [aria-label]="checkboxLabel()">
+              </mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)"
+                      [aria-label]="checkboxLabel(row)">
+              </mat-checkbox>
+              </td>
+            </ng-container>
+            
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+            
+            <!-- Name Column -->
+            <ng-container matColumnDef="numero">
+              <th mat-header-cell *matHeaderCellDef> Numéro </th>
+              <td mat-cell *matCellDef="let element"> {{element.numero}} </td>
+            </ng-container>
+            
+            <!-- Weight Column -->
+            <ng-container matColumnDef="nom">
+              <th mat-header-cell *matHeaderCellDef> Nom </th>
+              <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+            </ng-container>
+            
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="prenom">
+              <th mat-header-cell *matHeaderCellDef> Prénom </th>
+              <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="niss">
+              <th mat-header-cell *matHeaderCellDef> NISS </th>
+              <td mat-cell *matCellDef="let element"> {{element.niss}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef> Email </th>
+              <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+            
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="langue">
+              <th mat-header-cell *matHeaderCellDef> Langue </th>
+              <td mat-cell *matCellDef="let element"> {{element.langue}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="dateact">
+              <th mat-header-cell *matHeaderCellDef> Date Act. </th>
+              <td mat-cell *matCellDef="let element"> {{element.dateact}} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+              (click)="selection.toggle(row)">
+            </tr>
+            </table>
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+              <br />
+        </div> 
+    </div> 
+    
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Annuler</button>
+  <button mat-raised-button [mat-dialog-close]="true" color="accent" cdkFocusInitial><mat-icon>share</mat-icon> &nbsp;Diffuser</button>
+</mat-dialog-actions>

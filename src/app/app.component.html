@@ -1,0 +1,39 @@
+<p>
+	<mat-toolbar color="primary">
+	  <button mat-icon-button class="app-icon" aria-label="App icon-button with menu icon" (click)="drawer.toggle()">
+		<mat-icon>apps</mat-icon>
+	  </button>
+	  <span>Doccle CDN</span>
+	  <span class="app-spacer"></span>
+	  <button mat-icon-button class="app-icon" aria-label="App icon-button with person icon">
+		<mat-icon><mat-icon>person</mat-icon> </mat-icon>
+	  </button>
+	  <button mat-icon-button class="app-icon" aria-label="App icon-button with search icon" style="margin-left: 20px;">
+		<mat-icon><mat-icon>search</mat-icon> </mat-icon>
+	  </button>
+	</mat-toolbar>
+  </p>
+
+  <mat-drawer-container class="app-container" [style.width.%]=100>
+	<mat-drawer #drawer class="app-sidenav" mode="side" style="width: 250px">
+		<a routerLink="/dashboard" routerLinkActive="active"> <mat-icon>home</mat-icon><span>Dashboard</span></a>
+		<a routerLink="/list-documents" routerLinkActive="active"> <mat-icon>folder</mat-icon><span>Documents</span></a>
+		<a routerLink="/list-receivers" routerLinkActive="active"> <mat-icon>people</mat-icon><span>Receivers</span></a>
+		<a routerLink="/list-batch" routerLinkActive="active"> <mat-icon>folder_shared</mat-icon><span>Batch</span></a>
+		<a routerLink="/administration" routerLinkActive="active"> <mat-icon>settings</mat-icon><span>Administration</span></a>
+	</mat-drawer>
+  
+	<div class="app-sidenav-content" style="align-content: center;">
+		<div style="width: 90%;">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+  
+  </mat-drawer-container>
+
+  <div class="app-footer">
+	<span class="app-footer-author"><a href="http://baotec.com">By Baotec</a></span> 
+  </div>
+
+
+
