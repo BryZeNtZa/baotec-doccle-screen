@@ -18,7 +18,7 @@ export interface DocumentInterface {
 
 const ELEMENT_DATA: DocumentInterface[] = [
   {id:11255, nom: 'Demandes Adhésion.docx', type:'Docx', periode: '01/06/2021-21/06/2021', libelle: 'Demandes Adhésion Association CFEHU', statutEnvoi:'Attente'},
-  {id:2786, nom: 'Fiche Paie Brice NTSA 20-06-21.PDF', type:'PDF', periode: '01/06/2021-21/06/2021', libelle: 'Fiche Paie Brice NTSA 20 Juin 2021', statutEnvoi:'Envoyé'},
+  {id:2786, nom: 'Fiche Paie Brice Peeters 20-06-21.PDF', type:'PDF', periode: '01/06/2021-21/06/2021', libelle: 'Fiche Paie Brice Peeters 20 Juin 2021', statutEnvoi:'Envoyé'},
   {id:4593, nom: 'Fichier du personnel 2021', type:'XLS', periode: '01/01/2021-01/01/2022', libelle: 'Fichier du personnel année 2021', statutEnvoi:'Envoyé'},
   {id:1445, nom: 'Panneau publicitaire Bruxelle 0129.jpg', type:'JPG', periode: '01/06/2021-21/06/2021', libelle: 'Panneau publicitaire campagne du 01/06/2021 au 21/06/2021', statutEnvoi:'Attente'},
   {id:6893, nom: 'Déclaration TVA 2è Trimestre BAOTEC 2021.xml', type:'XML', periode: '01/03/2021-01/06/2021', libelle: 'éclaration TVA 2è Trimestre BAOTEC 2021', statutEnvoi:'Attente'},
@@ -74,7 +74,7 @@ export class ListDocumentsComponent {
 
   addDocument() {
     const dialogRef = this.dialog.open(AddDocumentDialogComponent, {
-      width: '100%',
+      width: '33%',
       minHeight: 'calc(100vh - 90px)',
       height : 'auto'
     });
@@ -87,7 +87,7 @@ export class ListDocumentsComponent {
   }
   sendDocuments() {
     const dialogRef = this.dialog.open(SendReceiversDialogComponent, {
-      width: '100%',
+      width: '33%',
       minHeight: 'calc(100vh - 90px)',
       height : 'auto'
     });
