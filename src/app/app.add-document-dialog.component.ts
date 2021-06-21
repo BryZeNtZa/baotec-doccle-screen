@@ -114,4 +114,6 @@ export class AddDocumentDialogComponent {
     alert("Component nor ready !");
   }
 
+  diffuse() {}
+
 }

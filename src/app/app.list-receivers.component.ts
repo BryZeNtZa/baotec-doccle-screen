@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ViewChild, Input} from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
@@ -45,6 +45,18 @@ export class ListReceiversComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
+
+  /**
+   * Check if title should be display
+   */
+  @Input()
+  displayTitle: boolean = true;
+
+  /**
+   * Check if title should be display
+   */
+  @Input()
+  displaySendDocBtn: boolean = true;
 
   constructor(
     private route: ActivatedRoute,

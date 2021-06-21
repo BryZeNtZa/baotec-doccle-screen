@@ -1,11 +1,12 @@
-<div style="margin-top: 10px; border: 1px solid #CCC; border-radius: 6px; padding: 50px;">
+<div class="{{displayTitle ? 'margin-top: 10px; border: 1px solid #CCC; border-radius: 6px; padding: 50px;':'border: 1px solid #CCC;'}}">
 
-	<div style="background: #c7c7c7; border-radius: 6px; border: 1px solid rgb(94, 94, 94); padding: 10px">
+	<div *ngIf="displayTitle" style="background: #c7c7c7; border-radius: 6px; border: 1px solid rgb(94, 94, 94); padding: 10px">
 		<mat-icon>menu</mat-icon><span style="position: relative; top: -6px; left: 10px">Liste des receivers</span>
 	</div>
-
-	<br />
-	<br />
+	<div *ngIf="displayTitle">
+		<br />
+		<br />
+	</div>
 	
 	<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%">
 
@@ -80,9 +81,9 @@
 			(click)="selection.toggle(row)">
 		</tr>
 	  </table>
-	  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+	  <mat-paginator [pageSizeOptions]="[2, 5, 10, 20]" showFirstLastButtons></mat-paginator>
 	  <br />
-	  <button mat-raised-button (click)="addReceiver()" style="margin-right: 30px;"> <mat-icon>add</mat-icon> Ajouter </button>
-	  <button mat-raised-button (click)="deleteReceiver()" style="margin-right: 30px;"><mat-icon>remove</mat-icon>Supprimer</button>
-	  <button mat-raised-button (click)="openDocumentSender()"><mat-icon>share</mat-icon> &nbsp; Envoyer documents</button>
+	  <button *ngIf="displaySendDocBtn" mat-raised-button (click)="addReceiver()" style="margin-right: 30px;"> <mat-icon>add</mat-icon> Ajouter </button>
+	  <button *ngIf="displaySendDocBtn" mat-raised-button (click)="deleteReceiver()" style="margin-right: 30px;"><mat-icon>remove</mat-icon>Supprimer</button>
+		<button *ngIf="displaySendDocBtn" mat-raised-button (click)="openDocumentSender()"><mat-icon>share</mat-icon> &nbsp; Envoyer documents</button>
 </div>
