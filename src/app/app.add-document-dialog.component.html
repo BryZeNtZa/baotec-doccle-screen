@@ -1,18 +1,17 @@
-<h2 mat-dialog-title>Ajout de documents</h2>
+<h2 mat-dialog-title>Envoi d'un document à plusieurs receivers</h2>
 
-<mat-dialog-content class="mat-typography" style="height: calc(100vh - 90px)">
-
-    <div style="position: relative; border: 1px solid rgb(158, 158, 158); border-radius: 6px; margin-top: 20px; height: 70%; padding: 30px; overflow: auto;"> 
-        <div>
+<mat-dialog-content class="mat-typography" style="height: 100%">
+    <div style="margin-top: 0.1px; height: 100%; padding: 5px;"> 
+        <div style="font-size: 12px">
             <div class="form-container" style="align-content: center;">
                 <p>
                     <!-- Hide required marker (asterix) and auto float label -->
-                    <button mat-stroked-button (click)="fileInput.click()" color="primary" style="margin-right: 30px; padding: 20px; width: 100%"> <mat-icon>attach_file</mat-icon>Choisir un fichier</button>
+                    <button mat-stroked-button (click)="fileInput.click()" color="primary" style="margin-top: 0.25px;margin-right: 15px; padding: 5px; width: 50%"> <mat-icon>attach_file</mat-icon>Choisir un fichier</button>
                     <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
                 </p>
 
                 <p>
-                    <mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
+                    <mat-form-field appearance="outline" [floatLabel]="'auto'" [style.width.%]=50 style="margin-top: 0.25px;margin-bottom: -1.5em;">
                         <mat-label>Type Document</mat-label>
                         <mat-select name="typeDocumentReactiveVaraible" [formControl]="selectedTypeDocumentControl" placeholder="Type Document">
                             <mat-option *ngFor="let typeDocument of typesDocument" [value]="typeDocument.short">
@@ -24,7 +23,7 @@
  
                 <p>
                     <!-- Show required marked (asterix) and auto float label -->
-                    <mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
+                    <mat-form-field appearance="outline" [floatLabel]="'auto'" [style.width.%]=50 style="margin-top: 0.25px;margin-bottom: -1.5em;">
                         <mat-label>Période</mat-label>
                         <mat-select name="periodReactiveVaraible" [formControl]="sselectedPeriodeControl" placeholder="Période">
                             <mat-option *ngFor="let periode of periodes" [value]="periode.short">
@@ -34,18 +33,25 @@
                     </mat-form-field>
                 </p>
         
-                <p>
-                    <mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
-                        <mat-label>Libellé</mat-label>
-                        <textarea matInput placeholder="Libellé"></textarea>
-                    </mat-form-field>
-                </p>
+                <mat-form-field appearance="outline" [style.width.%]=50 style="margin-top: 0.25px;margin-bottom: -1.5em;">
+                    <mat-label>Libellé</mat-label>
+                    <input type="text" placeholder="Libellé du document" matInput minlength="1" maxlength="255" [value]="">
+                    <mat-error>"receiver.niss.empty.error"</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" [style.width.%]=100 style="margin-top: 0.25px;">
+                        <mat-label>Description</mat-label>
+                        <textarea rows="1" matInput placeholder="Description"></textarea>
+                </mat-form-field>
             </div>
-        </div> 
-    </div> 
-    
+        </div>
+        <list-receivers [displayTitle]="false" [displaySendDocBtn]="false"></list-receivers>
+    </div>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close>Annuler</button>
-  <button mat-raised-button [mat-dialog-close]="true" color="accent" cdkFocusInitial><mat-icon>save</mat-icon> &nbsp;Enregistrer</button>
+<mat-dialog-actions align="start">
+  <!-- <button mat-raised-button mat-dialog-close>Annuler</button>
+  <button mat-raised-button [mat-dialog-close]="true" color="accent" cdkFocusInitial><mat-icon>save</mat-icon> &nbsp;Enregistrer</button> -->
+  <button mat-raised-button (click)="diffuse()" style="margin-right: 30px;"> <mat-icon>add</mat-icon> Ajouter </button>
+  <button mat-raised-button (click)="diffuse()" style="margin-right: 30px;"><mat-icon>remove</mat-icon>Supprimer</button>
+  <button mat-raised-button (click)="diffuse()"><mat-icon>share</mat-icon> &nbsp; Diffuser</button>
 </mat-dialog-actions>
