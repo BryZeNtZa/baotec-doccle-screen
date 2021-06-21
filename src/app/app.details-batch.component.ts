@@ -24,6 +24,7 @@ const ELEMENT_DATA: DocumentInterface[] = [
   {id:755884, nom: 'Document Test.pdf', type:'PDF', periode: '01/06/2021-21/06/2021', libelle: 'Document Test', statutEnvoi:'Annulé'},
   {id:8889965, nom: 'Document sans nom.pdf', type:'PDF', periode: '01/06/2021-21/06/2021', libelle: 'Document sans nom', statutEnvoi:'Annulé'},
 ];
+
 @Component({
     selector: 'details-batch',
     templateUrl: './app.details-batch.component.html',
