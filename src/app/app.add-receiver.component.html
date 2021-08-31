@@ -1,79 +1,71 @@
-<div style="margin-top: 20px; border: 1px solid #CCC; border-radius: 6px; padding: 50px;">
+<div style="margin-top: 20px; border: 1px solid #CCC; border-radius: 6px; padding: 5px; align-content: center;">
 
-	<div style="background: #c7c7c7; border-radius: 6px; border: 1px solid rgb(94, 94, 94); padding: 10px">
-		<mat-icon>add</mat-icon><span style="position: relative; top: -6px; left: 10px">Ajout d'un receiver</span>
+	<div style="padding: 10px; margin-top: 10px; width: 50%; margin-left: 25%;">
+
+		<div style="background: #c7c7c7; border-radius: 6px; border: 1px solid rgb(94, 94, 94); padding: 10px;">
+			<mat-icon>add</mat-icon><span style="position: relative; top: -6px; left: 10px">Ajout d'un receiver</span>
+		</div>
+
+		<div class="form-container" style="border: 1px solid #CCC; border-radius: 6px; padding: 10px; margin-top: 20px;">
+			<p>
+				<!-- Hide required marker (asterix) and auto float label -->
+				<mat-form-field  [floatLabel]="'auto'" [style.width.%]=48 [style.padding.%]=1>
+					<input matInput placeholder="Numéro" required>
+				</mat-form-field>
+
+				<mat-form-field  [floatLabel]="'auto'" [style.width.%]=50>
+					<input matInput placeholder="Titre" required>
+				</mat-form-field>
+			</p>
+
+			<p>
+				<!-- Hide required marker (asterix) and auto float label -->
+				<mat-form-field [floatLabel]="'auto'" [style.width.%]=48 [style.padding.%]=1>
+					<input matInput placeholder="Nom" required>
+				</mat-form-field>
+				<mat-form-field [floatLabel]="'auto'" [hideRequiredMarker]="true" [style.width.%]=50>
+					<mat-label>Prénom</mat-label>
+					<input matInput placeholder="Prénom" required>
+				</mat-form-field>
+			</p>
+
+			<p>
+				<mat-form-field [floatLabel]="'auto'" [style.width.%]=48 [style.padding.%]=1>
+					<mat-label>Nationalité</mat-label>
+					<mat-select name="countryReactiveVaraible" [formControl]="selectedCountryControl" placeholder="Country">
+						<mat-option *ngFor="let country of countries" [value]="country.short">
+						{{country.full}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+				<mat-form-field [floatLabel]="'auto'" [style.width.%]=50>
+					<mat-label>Langue</mat-label>
+					<mat-select name="languageReactiveVaraible" [formControl]="selectedLanguageControl" placeholder="Language">
+						<mat-option *ngFor="let language of languages" [value]="language.short">
+						{{language.full}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+
+			</p>
+
+			<p>
+				<mat-form-field [floatLabel]="'auto'"  [style.width.%]=48 [style.padding.%]=1>
+					<mat-label>Email</mat-label>
+					<input matInput placeholder="Email" required>
+				</mat-form-field>
+
+				<mat-form-field [floatLabel]="'auto'" [style.width.%]=50>
+					<mat-label>NISS</mat-label>
+					<input matInput placeholder="NISS" required>
+				</mat-form-field>
+			</p>
+		</div>
+
+		<br />
+		<button mat-raised-button (click)="saveReceiver()" style="margin-right: 30px;"> <mat-icon>save</mat-icon> Enregistrer </button>
+		<button mat-raised-button (click)="removeReceiver()" style="margin-right: 30px;"><mat-icon>remove</mat-icon>Supprimer</button>
+		<button mat-raised-button (click)="backToListReceivers()"><mat-icon>arrow_back</mat-icon> &nbsp; Retour à la liste</button>
 	</div>
-
-	<br />
-	<br />
-
-	<div class="form-container">
-		<p>
-			<!-- Hide required marker (asterix) and auto float label -->
-			<mat-form-field  [floatLabel]="'auto'" [style.width.%]=100>
-				<input matInput placeholder="Numéro" required>
-			</mat-form-field>
-		</p>
-		<p>
-			<!-- Hide required marker (asterix) and auto float label -->
-			<mat-form-field  [floatLabel]="'auto'" [style.width.%]=100>
-				<input matInput placeholder="Titre" required>
-			</mat-form-field>
-		</p>
-		<p>
-			<!-- Hide required marker (asterix) and auto float label -->
-			<mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
-				<input matInput placeholder="Nom" required>
-			</mat-form-field>
-		</p>
-		<p>
-			<!-- Show required marked (asterix) and auto float label -->
-			<mat-form-field [floatLabel]="'auto'" [hideRequiredMarker]="true" [style.width.%]=100>
-				<mat-label>Prénom</mat-label>
-				<input matInput placeholder="Prénom" required>
-			</mat-form-field>
-		</p>
-
-		<p>
-			<mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
-				<mat-label>Nationalité</mat-label>
-				<mat-select name="countryReactiveVaraible" [formControl]="selectedCountryControl" placeholder="Country">
-					<mat-option *ngFor="let country of countries" [value]="country.short">
-					{{country.full}}
-					</mat-option>
-				</mat-select>
-			</mat-form-field>
-		</p>
-		<p>
-			<!-- Show required marked (asterix) and auto float label -->
-			<mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
-				<mat-label>Email</mat-label>
-				<input matInput placeholder="Email" required>
-			</mat-form-field>
-		</p>
-		<p>
-			<!-- Show required marked (asterix) and auto float label -->
-			<mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
-				<mat-label>Langue</mat-label>
-				<mat-select name="languageReactiveVaraible" [formControl]="selectedLanguageControl" placeholder="Language">
-					<mat-option *ngFor="let language of languages" [value]="language.short">
-					{{language.full}}
-					</mat-option>
-				</mat-select>
-			</mat-form-field>
-		</p>
-
-		<p>
-			<mat-form-field [floatLabel]="'auto'" [style.width.%]=100>
-				<mat-label>NISS</mat-label>
-				<textarea matInput placeholder="NISS"></textarea>
-			</mat-form-field>
-		</p>
-	</div>
-
-	<br />
-	<button mat-raised-button (click)="saveReceiver()" style="margin-right: 30px;"> <mat-icon>save</mat-icon> Enregistrer </button>
-	<button mat-raised-button (click)="removeReceiver()" style="margin-right: 30px;"><mat-icon>remove</mat-icon>Supprimer</button>
-	<button mat-raised-button (click)="backToListReceivers()"><mat-icon>arrow_back</mat-icon> &nbsp; Retour à la liste</button>
 </div>
 
